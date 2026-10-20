@@ -1,0 +1,32 @@
+*.iml
+.DS_Store
+.gradle
+.kotlin
+*.hprof
+/.idea
+/captures
+/local.properties
+build
+/调试/
+/.spec-workflow/
+/.playwright-mcp/
+/AGENTS.md
+
+# 本地文档、服务端代码和开发工具资料
+/docs/
+/worker/
+/.codex-remote-attachments/
+/.repository-backup/
+
+# 构建产物、构建记录与本地签名配置
+*.apk
+*.aab
+*.apks
+*.log
+*.jks
+*.keystore
+/keystore.properties
+/signing.properties
+.env
+.env.*
+!.env.example
