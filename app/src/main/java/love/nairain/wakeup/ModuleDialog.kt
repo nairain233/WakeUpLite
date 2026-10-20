@@ -73,7 +73,9 @@ internal object ModuleDialog {
             ) {
                 if (!FeatureUnlockSettings.isUnlocked(activity)) {
                     versionClicks++
-                    if (versionClicks == 10) {
+                    if (versionClicks == 1) {
+                        Toast.makeText(activity, "再点一下试试", Toast.LENGTH_SHORT).show()
+                    } else if (versionClicks == 10) {
                         FeatureUnlockSettings.unlock(activity)
                         unlockedFeatures.visibility = View.VISIBLE
                         Toast.makeText(activity, "喵喵喵", Toast.LENGTH_SHORT).show()

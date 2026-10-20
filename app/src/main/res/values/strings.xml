@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WakeUpLite</string>
-    <string name="module_description">用于精简 WakeUp 课程表界面的 Xposed 模块。</string>
+    <string name="module_description">用于精简 WakeUp 课程表界面的 Xposed 模块。\n长按课表页右上角三个点打开模块设置。</string>
 </resources>
