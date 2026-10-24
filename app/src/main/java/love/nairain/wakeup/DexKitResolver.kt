@@ -160,6 +160,14 @@ internal class DexKitResolver(
         }
 
         val activity = "${TargetApp.PACKAGE_NAME}.schedule.ScheduleActivity"
+        locate(HookPoint.RATING_DIALOG) {
+            host {
+                declaredClass(activity)
+                returnType = "boolean"
+                paramTypes(activity, null)
+                exactStrings("donateDialog", "open_times")
+            }.filter { Modifier.isStatic(it.modifiers) }
+        }
         val bar = "${TargetApp.PACKAGE_NAME}.widget.MainAiTitleTabView"
         locate(HookPoint.TAB_LOAD) {
             host {

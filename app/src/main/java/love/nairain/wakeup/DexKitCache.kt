@@ -30,7 +30,7 @@ internal class DexKitCache(dataDir: String) {
 }
 
 internal object ApkFingerprint {
-    const val RULES_VERSION = 1
+    const val RULES_VERSION = 2
 
     fun calculate(hostPaths: List<String>, modulePath: String): String {
         val digest = MessageDigest.getInstance("SHA-256")

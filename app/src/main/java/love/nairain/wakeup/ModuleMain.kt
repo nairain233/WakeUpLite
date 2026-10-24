@@ -47,6 +47,7 @@ class ModuleMain : XposedModule() {
         }
         VipHooks(this, isUnlocked) { status.application }.install(targets)
         AdBlockHooks(this, isUnlocked).install(targets)
+        RatingDialogHook(this).install(targets)
 
         val minePage = MinePageHook(this)
         minePage.install(targets)

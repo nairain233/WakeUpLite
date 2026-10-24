@@ -8,6 +8,7 @@ internal enum class HookPoint(val label: String) {
     VIP("本地会员"), DARK_GET("深色模式读取"), DARK_SET("深色模式保存"),
     SIMPLE_GET("简洁模式读取"), SIMPLE_SET("简洁模式保存"),
     COLD_AD("冷启动广告"), HOT_AD("热启动广告"), BANNER_AD("底部广告"),
+    RATING_DIALOG("好评弹窗"),
     MINE_CREATE("我的页面创建"), MINE_ROOT("我的页面根视图"), MINE_RENDER("我的页面渲染"),
     TAB_LOAD("底栏创建"), TAB_ID("底栏项目标识"), TAB_GET("底栏视图"),
     TAB_VISIBILITY("底栏可见性"), TAB_SELECT("底栏选择"),
