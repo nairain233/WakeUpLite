@@ -49,6 +49,12 @@ internal object ModuleDialog {
             content.addView(mineRow.view)
             content.addView(shortcutsRow.view)
             content.addView(style.divider())
+            content.addView(style.section("弹窗设置"))
+            content.addView(style.switchRow("屏蔽更新弹窗", UpdateDialogSettings.isBlocked(activity)) { blocked ->
+                UpdateDialogSettings.setBlocked(activity, blocked)
+            })
+            content.addView(style.description("开启后屏蔽所有新版本更新弹窗。设置自动保存，下次检查更新时生效。"))
+            content.addView(style.divider())
 
             val defaults = style.column().apply {
                 visibility = View.GONE

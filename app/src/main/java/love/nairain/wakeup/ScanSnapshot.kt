@@ -127,6 +127,7 @@ internal val HookPoint.queryPath: String
             HookPoint.HOT_AD -> "$root*;->?()Z [string=ADET_Norequest,hotSplash,admissionBlock,vipUser; static]"
             HookPoint.BANNER_AD -> "$root*;->?()I [string=ADET_Norequest,scheduleStream,admissionBlock,vipUser; static]"
             HookPoint.RATING_DIALOG -> "${root}schedule/ScheduleActivity;->?(ScheduleActivity,?)Z [string=donateDialog,open_times; static]"
+            HookPoint.UPDATE_DIALOG -> "*;->?(${root}aaa/v1/CheckAppUpdate;)V [string=UPDATE_DIALOG_CAN_SHOW,UPDATE_DIALOG_CAN_NOT_SHOW; instance]"
             HookPoint.MINE_CREATE -> "${root}aaa/fragment/MineFragment;->onCreateView(Landroid/view/LayoutInflater;Landroid/view/ViewGroup;Landroid/os/Bundle;)Landroid/view/View;"
             HookPoint.MINE_ROOT -> "${root}aaa/fragment/MineFragment;->?()Landroid/view/View; [string=mContainerView]"
             HookPoint.MINE_RENDER -> "${root}aaa/fragment/MineFragment;->?(MineFragment,?) [string=VIP会员,coverImageCos,yyyy/MM/dd; static]"

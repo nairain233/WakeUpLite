@@ -168,6 +168,13 @@ internal class DexKitResolver(
                 exactStrings("donateDialog", "open_times")
             }.filter { Modifier.isStatic(it.modifiers) }
         }
+        locate(HookPoint.UPDATE_DIALOG) {
+            find {
+                returnType = "void"
+                paramTypes("${TargetApp.PACKAGE_NAME}.aaa.v1.CheckAppUpdate")
+                exactStrings("UPDATE_DIALOG_CAN_SHOW", "UPDATE_DIALOG_CAN_NOT_SHOW")
+            }.filterNot { Modifier.isStatic(it.modifiers) }
+        }
         val bar = "${TargetApp.PACKAGE_NAME}.widget.MainAiTitleTabView"
         locate(HookPoint.TAB_LOAD) {
             host {
