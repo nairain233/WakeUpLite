@@ -37,6 +37,7 @@ internal object ModuleDialog {
         private lateinit var bottomRow: DialogStyle.Row
         private lateinit var mineRow: DialogStyle.Row
         private lateinit var shortcutsRow: DialogStyle.Row
+        private lateinit var popupRow: DialogStyle.Row
         private var versionClicks = 0
 
         fun show(): AlertDialog {
@@ -45,15 +46,11 @@ internal object ModuleDialog {
             bottomRow = style.row("底栏精简", bottomSummary()) { showBottomBarSettings() }
             mineRow = style.row("我的页面精简", mineSummary()) { showMinePageSettings() }
             shortcutsRow = style.row("课表菜单精简", shortcutsSummary()) { showShortcutSettings() }
+            popupRow = style.row("弹窗设置", popupSummary()) { showPopupSettings() }
             content.addView(bottomRow.view)
             content.addView(mineRow.view)
             content.addView(shortcutsRow.view)
-            content.addView(style.divider())
-            content.addView(style.section("弹窗设置"))
-            content.addView(style.switchRow("屏蔽更新弹窗", UpdateDialogSettings.isBlocked(activity)) { blocked ->
-                UpdateDialogSettings.setBlocked(activity, blocked)
-            })
-            content.addView(style.description("开启后屏蔽所有新版本更新弹窗。设置自动保存，下次检查更新时生效。"))
+            content.addView(popupRow.view)
             content.addView(style.divider())
 
             val defaults = style.column().apply {
@@ -141,6 +138,14 @@ internal object ModuleDialog {
             }
         }
 
+        private fun showPopupSettings() {
+            showSettings("弹窗设置", "设置自动保存，下次检查更新时生效。") {
+                addView(style.switchRow("屏蔽更新弹窗", UpdateDialogSettings.isBlocked(activity)) { blocked ->
+                    UpdateDialogSettings.setBlocked(activity, blocked)
+                })
+            }
+        }
+
         private fun showSettings(
             title: String,
             description: String,
@@ -158,6 +163,7 @@ internal object ModuleDialog {
                         bottomRow.summary.text = bottomSummary()
                         mineRow.summary.text = mineSummary()
                         shortcutsRow.summary.text = shortcutsSummary()
+                        popupRow.summary.text = popupSummary()
                     }
                 }
             }
@@ -174,6 +180,9 @@ internal object ModuleDialog {
         private fun shortcutsSummary(): String = "已显示 ${ScheduleShortcutSettings.Item.entries.count {
             ScheduleShortcutSettings.isVisible(activity, it)
         }} / ${ScheduleShortcutSettings.Item.entries.size} 项"
+
+        private fun popupSummary(): String =
+            if (UpdateDialogSettings.isBlocked(activity)) "更新弹窗已屏蔽" else "更新弹窗未屏蔽"
 
         private fun openLink(url: String) {
             try {
